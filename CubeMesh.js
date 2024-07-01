@@ -15,8 +15,10 @@ const createFaceTexture = (color) => {
   canvas.height = size;
   const context = canvas.getContext('2d');
 
+
   context.fillStyle = 'black';
   context.fillRect(0, 0, size, size);
+
 
   context.fillStyle = color;
   for (let y = 0; y < 3; y++) {
@@ -33,17 +35,17 @@ const createFaceTexture = (color) => {
   return new THREE.CanvasTexture(canvas);
 };
 
-const CubeMesh = ({ id, position, colorIndex }) => {
+const CubeMesh = ({ position, colorIndex }) => {
   const mesh = useRef();
   const color = colors[colorIndex % colors.length];
   const texture = createFaceTexture(color);
 
-  useFrame(() => {
-    // if (mesh.current) {
-    //   mesh.current.rotation.x += 0.01;
-    //   mesh.current.rotation.y += 0.01;
-    // }
-  });
+  // useFrame(() => {
+  //   if (mesh.current) {
+  //     mesh.current.rotation.x += 0.01;
+  //     mesh.current.rotation.y += 0.01;
+  //   }
+  // });
 
   return (
     <mesh ref={mesh} position={position}>
